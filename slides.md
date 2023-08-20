@@ -325,8 +325,11 @@ Import map can use **UMD**, **SystemJS**.
 # Why import maps? File size, example
 
 Infographic from **Micro Frontends in Action** _Michael Geers_
+<div class="grid place-items-center">
 
 ![Local Image](/resize-share-deps.png)
+
+</div>
 
 ---
 
@@ -345,17 +348,44 @@ Infographic from **Micro Frontends in Action** _Michael Geers_
 
 # Why import maps? Dependency management, externals example
 
-Without externals
-
-<div class="flex">
+Bundle size of application without externals
+<div class="flex justify-between">
 <span>
-
-<iframe src="http://localhost:5500/demo/externals/module" height="150" width="150"></iframe>
+Module: 141kB
+<iframe src="http://localhost:5500/demo/no-externals/module" height="120" width="150"></iframe>
 </span>
-<iframe src="http://localhost:5500/demo/externals/module" height="150" width="150"></iframe>
-<iframe src="http://localhost:5500/demo/externals/module" height="150" width="150"></iframe>
-<iframe src="http://localhost:5500/demo/externals/module" height="150" width="150"></iframe>
-<iframe src="http://localhost:5500/demo/externals/module" height="150" width="150"></iframe>
+<span>
+IIFE: 141kB
+<iframe src="http://localhost:5500/demo/no-externals/iife" height="120" width="150"></iframe>
+</span>
+<span>
+System: 141kB
+<iframe src="http://localhost:5500/demo/no-externals/system" height="120" width="150"></iframe>
+</span>
+<span>
+UMD: 141kB
+<iframe src="http://localhost:5500/demo/no-externals/umd" height="120" width="150"></iframe>
+</span>
+</div>
+
+Bundle size of application with externals, react, react-dom downloaded from CDN
+<div class="flex justify-between">
+<span>
+Module: 3kB
+<iframe src="http://localhost:5500/demo/externals/module" height="120" width="150"></iframe>
+</span>
+<span>
+IIFE: 4kB
+<iframe src="http://localhost:5500/demo/externals/iife" height="120" width="150"></iframe>
+</span>
+<span>
+System: 4kB
+<iframe src="http://localhost:5500/demo/externals/system" height="120" width="150"></iframe>
+</span>
+<span>
+UMD: 4kB
+<iframe src="http://localhost:5500/demo/externals/umd" height="120" width="150"></iframe>
+</span>
 </div>
 ---
 
@@ -391,10 +421,13 @@ export default {
 ---
 
 # Why import maps? Dependency management, example
-
 Process of releasing new version of application
 
+<div class="grid place-items-center -mt-8">
+
 ![Local Image](/release.png)
+
+</div>
 
 ---
 
