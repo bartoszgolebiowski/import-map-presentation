@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="importmap">
+      {
+        "imports": {
+          "lodash": "https://cdn.skypack.dev/lodash@4.17.20",
+          "lodash@next": "https://cdn.skypack.dev/lodash",
+          "@/app": "./app.mjs",
+          "@/cart": "./app2.mjs"
+        }
+      }
+    </script>
+    <title>Scope</title>
+  </head>
+  <body>
+    <script type="module">
+      import __ from "@/app";
+      import ___ from "@/cart";
+
+      document.getElementById("app").innerHTML = `@/app lodash version: ${__.VERSION}`;
+      document.getElementById("cart").innerHTML = `@/cart lodash version: ${___.VERSION}`;
+    </script>
+    <div>
+      <p id="app"></p>
+      <p id="cart"></p>
+    </div>
+  </body>
+</html>

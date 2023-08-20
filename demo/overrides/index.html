@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="importmap-type" content="systemjs-importmap" />
     <script type="systemjs-importmap">
       {
         "imports": {
@@ -14,10 +15,12 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/amd.js"></script>
-    <title>Externals system</title>
+    <script src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
+    <title>Import map override</title>
     <script src="./assets/index-8eaf12ba.js"></script>
   </head>
   <body>
     <div id="root"></div>
+    <import-map-overrides-full></import-map-overrides-full>
   </body>
 </html>

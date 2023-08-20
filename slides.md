@@ -62,7 +62,6 @@ transition: slide-left
 
 What we see
 
-
 ```html {4-8,12-16} 
 <html>
   <head>
@@ -438,3 +437,99 @@ With **import-map-overrides** we are able to override import maps in runtime
 ![Local Image](/import-map-override.gif)	
 
 ---
+
+# Why import maps? Dependency overrides, example
+
+<iframe src="http://localhost:5500/demo/overrides" height="400" width="800"></iframe>
+
+---
+
+# Why import maps? Same dependency, different versions
+
+We can utylize **scopes** to use different versions of the same dependency, or **aliasing**
+
+<div class="grid grid-cols-2 gap-4 h-80">
+<div>
+```html {3-14,17-18} 
+<html>
+  <script type="importmap">
+    {
+      "imports": {
+        "lodash": "https://cdn.skypack.dev/lodash@4.17.16",
+        "@/app": "./app.mjs",
+        "@/cart": "./next/cart.mjs"
+      },
+      "scopes": {
+        "next/": {
+          "lodash": "https://cdn.skypack.dev/lodash"
+        }
+      }
+    }
+  </script>
+  <script type="module">
+    import app from "@/app";
+    import cart from "@/cart";
+    console.log(app.VERSION) // 4.17.16 
+    console.log(cart.VERSION) // 4.17.21
+ </script>
+</html>
+```
+</div>
+<div>
+```html {3-10,13-14} 
+<html>
+  <script type="importmap">
+    {
+      "imports": {
+        "lodash": "https://cdn.skypack.dev/lodash@4.17.16",
+        "lodash@next": "https://cdn.skypack.dev/lodash",
+        "@/app": "./app.mjs",
+        "@/cart": "./next/cart.mjs"
+      }
+    }
+  </script>
+  <script type="module">
+    import app from "@/app";
+    import cart from "@/cart";
+    console.log(app.VERSION) // 4.17.16 
+    console.log(cart.VERSION) // 4.17.21
+ </script>
+</html>
+```
+</div>
+
+</div>
+---
+
+# Why import maps? Same dependency, different versions, example
+
+
+<div class="grid grid-cols-2 gap-4 h-80">
+<div>
+<p>
+Alias
+</p>
+<iframe src="http://localhost:5500/demo/versions/alias" height="400" width="800"></iframe>
+
+</div>
+<div>
+<p>
+Scopes
+</p>
+<iframe src="http://localhost:5500/demo/versions/scopes" height="400" width="800"></iframe>
+
+</div>
+
+</div>
+---
+
+# Conclusion
+
+- Import map gives as a controll over **import** statement and **import()** expression
+- It allows us to manage dependencies like: libraries, frameworks, shared components and applications
+- We can reduce the size of our build thanks to effective sharing and caching shared dependencies
+- Allows us to one or nothing upgrade and also iterative migration of dependencies
+- It is a standard with **85%** support in browsers
+- Polyfill is available for all browsers
+- Works only with **modules**
+- We should not use overrides tooling in production
